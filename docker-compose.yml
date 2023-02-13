@@ -1,0 +1,14 @@
+version: "3.6"
+
+services:
+  nginx_swarm:
+    image: hyp-registry.nosis.interno/nginx/nginx_swarm
+    build: .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - CONTAINER_NAME=whatever
+      - CONTAINER_IMAGE=nginx
+    deploy:
+      mode: replicated
+      replicas: 1
